@@ -1,0 +1,29 @@
+```
+===============================================================================
+                        __             __          ___
+                       |  \  /\  |\ | /  \   |\/| |__ 
+                       |__/ /~~\ | \| \__X . |  | |___
+===============================================================================
+```
+# Dan Q's Spartanlog
+
+Contains selected posts from my blog, and ocassional content exclusive to my Spartanlog.
+
+## Why Spartan?
+
+I'm not yet convinced by Spartan as a protocol. It's basically... Gemini, minus the encryption, with metadata cut down even further, and adding only one feature: something a bit like being able to "POST" data back to a server. (Yes, I know about Titan.) That's cute, and I might make use of it someday, but for now my Spartan presence is mostly a mirror of my Gemini capsule.
+
+These new-but-simplistic protocols have a certain beauty to them that the modern Web lacks, so I'm glad to be in a position to experiment with so many of them (you'll find me on Gopher, too, as well as - amazingly, on Finger). I hope you enjoy exploring my Spartanlog.
+
+## Selected posts from my blog
+
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% end %>
+## Elsewhere
+
+=> https://danq.me/ www: Dan's main blog
+=> gemini://danq.me/ gemini: Dan's gemini capsule
+=> gopher://danq.me/ gopher: Dan's gopherhole
+=> finger://danq.me/ finger: Dan's finger server
+=> https://m.danq.me/@dan fedi: @dan@danq.me
+=> mailto:gemlog@danq.me email: spartanlog@danq.me

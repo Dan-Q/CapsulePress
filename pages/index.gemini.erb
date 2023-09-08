@@ -1,0 +1,31 @@
+```
+===============================================================================
+                        __             __          ___
+                       |  \  /\  |\ | /  \   |\/| |__ 
+                       |__/ /~~\ | \| \__X . |  | |___
+===============================================================================
+```
+# Dan Q's Gemlog
+
+Contains selected posts from my blog, and ocassional content exclusive to my Gemlog.
+
+## Why Gemini?
+
+Gemini's a real gem (see what I did there) of a protocol. All the beauty and elegance of HTTPS (pre-HTTP/2), all the simplicity of Gopher. Couple that with the minimalist joy of the Gemtext - which is basically Markdown - and you've got something really special.
+
+Running a Gemini server isn't necessarily practical or sensible, but it's a statement. A statement that says: I miss the simpler Internet. The Internet where we were all encouraged to collaborate not by signing up to some or another huge and unethical social network but by creating and hosting your own content, in your own way.
+
+We'll probably never see a Web that looks like that again, but Gemini is designed to resist efforts to commercialise it. You'll never see a banner ad on Gemini, because images aren't loaded by default. You'll never be haunted by tracking cookies on Gemini, because cookies aren't part of the specification and it'd be almost impossible to retrofit them into it. And you'll never get hit by a cryptominer on Gemini, because there's no scripting whatsoever on the platform: just simple, lightweight, mostly-textual content. And that's just great.
+
+## Selected posts from my blog
+
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% end %>
+## Elsewhere
+
+=> https://danq.me/ www: Dan's main blog
+=> spartan://danq.me/ spartan: Dan's spartan instance
+=> gopher://danq.me/ gopher: Dan's gopherhole
+=> finger://danq.me/ finger: Dan's finger server
+=> https://m.danq.me/@dan fedi: @dan@danq.me
+=> mailto:gemlog@danq.me email: spartanlog@danq.me

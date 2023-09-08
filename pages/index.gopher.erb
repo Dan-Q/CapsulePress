@@ -1,0 +1,45 @@
+
+===============================================================================
+                        __             __          ___
+                       |  \  /\  |\ | /  \   |\/| |__ 
+                       |__/ /~~\ | \| \__X . |  | |___
+===============================================================================
+
+   __            .  __      __   __   __        ___  __        __        ___ 
+  |  \  /\  |\ | ' /__`    / _` /  \ |__) |__| |__  |__) |__| /  \ |    |__  
+  |__/ /~~\ | \|   .__/    \__> \__/ |    |  | |___ |  \ |  | \__/ |___ |___ 
+                                                               
+Contains selected posts from my blog, and ocassional content exclusive to my Gopherhole.
+
+
+                              __   __   __        ___  __  __ 
+            |  | |__| \ /    / _` /  \ |__) |__| |__  |__)  _|
+            |/\| |  |  |     \__> \__/ |    |  | |___ |  \  . 
+
+I've always had a soft spot for Gopher. I was fortunate enough to take my first steps on the Internet back when Gopher was still around, and while even then it seemed clear to me that the Web would "win" and render Gopher obsolete, I witnessed debates with its fans who argued passionately for Gopher's benefits.
+
+Gopher never died, of course: not completely. It still runs wild and free on the modern Internet. It's even enjoyed a minor resurgence in popularity in recent years, as the "smolnet" has taken root and people have taken an interest in reinventing the simpler, safer, faster, lighter, and more-interpersonal Internet.
+
+I believe that Gemini is our best bet for a future "Gopher-like" system, but I think that Gemini, Spartan and Gopher all have their own interesting charms.
+
+
+       __   ___       ___  __  ___  ___  __      __   __   __  ___  __  
+      /__` |__  |    |__  /  `  |  |__  |  \    |__) /  \ /__`  |  /__` 
+      .__/ |___ |___ |___ \__,  |  |___ |__/    |    \__/ .__/  |  .__/ 
+
+My Gopherhole mostly acts as a partial mirror of my weblog. Want to see?
+
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% end %>
+
+               ___       __   ___            ___  __   ___ 
+              |__  |    /__` |__  |  | |__| |__  |__) |__  
+              |___ |___ .__/ |___ |/\| |  | |___ |  \ |___ 
+
+=> / Home
+=> URL:https://danq.me/ www: Dan's main blog
+=> URL:gemini://danq.me/ gemini: Dan's gemini capsule
+=> URL:spartan://danq.me/ spartan: Dan's spartan instance
+=> URL:finger://danq.me/ finger: Dan's finger server
+=> URL:https://m.danq.me/@dan fedi: @dan@danq.me
+=> URL:mailto:gopherhole@danq.me email: gopherhole@danq.me

@@ -1,0 +1,72 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
+    artii (2.1.2)
+    async (1.31.0)
+      console (~> 1.10)
+      nio4r (~> 2.3)
+      timers (~> 4.1)
+    async-io (1.35.0)
+      async
+    console (1.23.2)
+      fiber-annotation
+      fiber-local
+    dotenv (2.8.1)
+    erubis (2.7.0)
+    eventmachine (1.2.7)
+    fiber-annotation (0.2.0)
+    fiber-local (1.0.0)
+    gemini_server (0.2.0)
+      addressable (~> 2.7)
+      async-io (~> 1.30)
+      mime-types (~> 3.3)
+      mustermann (~> 1.1)
+    gopher2000 (0.7.0)
+      artii (>= 2.0.1)
+      eventmachine (~> 1.2.5)
+      logging
+      mimemagic
+    gserver (0.0.1)
+    little-plugger (1.1.4)
+    logging (2.3.1)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.14)
+    marcel (1.0.2)
+    mime-types (3.5.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2023.0808)
+    mimemagic (0.4.3)
+      nokogiri (~> 1)
+      rake
+    multi_json (1.15.0)
+    mustermann (1.1.2)
+      ruby2_keywords (~> 0.0.1)
+    mysql2 (0.5.5)
+    nio4r (2.5.9)
+    nokogiri (1.15.4-x86_64-linux)
+      racc (~> 1.4)
+    public_suffix (5.0.3)
+    racc (1.7.1)
+    rake (13.0.6)
+    ruby2_keywords (0.0.5)
+    timers (4.3.5)
+    word_wrap (1.0.0)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  dotenv (~> 2.8)
+  erubis
+  gemini_server (~> 0.2.0)
+  gopher2000
+  gserver
+  marcel
+  mysql2 (~> 0.5.4)
+  nokogiri
+  word_wrap
+
+BUNDLED WITH
+   2.2.3
