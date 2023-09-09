@@ -4,9 +4,10 @@ Opinionated Gemini/Spartan/Gopher server backended by a WordPress database. Use 
 
 ## Requirements
 
-- Ruby 3.x
+- Ruby 3.x (tested most-thoroughly on 3.0.4)
 - OpenSSL (if using Gemini)
-- Superuser access, Authbind or similar (if running Spartan or Gopher on their default ports)
+- Superuser access, Authbind or similar (if running Spartan or Gopher on their default ports, which are in the privileged range)
+- A WordPress instance
 
 ## Installation
 
@@ -40,6 +41,7 @@ GEMINI_CERT_PATH=keys/cert.pem
 GEMINI_KEY_PATH=keys/key.pem
 
 # Credentials for your WordPress instance's MySQL database:
+# (you might like to use a read-only/limited user, for additional safety)
 DB_HOST=localhost
 DB_USER=username
 DB_PASS=password
@@ -80,7 +82,7 @@ User=yourusername
 Group=users
 WorkingDirectory=/var/capsulepress
 Restart=always
-ExecStart=/usr/bin/authbind --deep /home/yourusername/.rvm/gems/ruby-3.0.0/wrappers/ruby server.rb
+ExecStart=/usr/bin/authbind --deep /home/yourusername/.rvm/gems/ruby-3.0.4/wrappers/ruby capsulepress.rb
 
 [Install]
 WantedBy=multi-user.target
