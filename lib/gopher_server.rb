@@ -31,7 +31,7 @@ class GopherServer
         "#{guess_link_type_for($1)}#{$1}\t#{$1}\t#{ENV['GOPHER_DOMAIN']}\t#{ENV['GOPHER_PORT']}"
       else
         # text - first wrap it!
-        line.wrap(79).each_line.map{|part|"i#{part.rstrip}\tnull\t(FALSE)\t0"}.join("\n")
+        line.gsub(/\t/,'    ').wrap(79).each_line.map{|part|"i#{part.rstrip}\tnull\t(FALSE)\t0"}.join("\n")
       end
     }.join("\n")
   end
@@ -43,7 +43,7 @@ class GopherServer
       @app.config[:host] = ENV['GOPHER_HOST'] || '0.0.0.0'
       @app.config[:port] = ENV['GOPHER_PORT'] || 70
       @app.default_route do
-        puts @request.inspect # selector MIGHT not have a preceeding /, add one if not!
+        # puts @request.inspect # selector MIGHT not have a preceeding /, add one if not!
         if response = CapsulePress.handle(@request.selector, 'gopher') || CapsulePress.handle('_not_found', 'gopher')
           body = (response[:type] == 'text/gemini') ? GopherServer.gopherize_erbout(response[:body]) : response[:body]
           body
