@@ -47,7 +47,7 @@ DB_USER=username
 DB_PASS=password
 DB_NAME=database
 
-# Domain name of your WordPress instance (used for reverse-engineering link URLs and making Gopher links):
+# Domain name of your WordPress instance (used for reverse-engineering internal link URLs):
 DOMAIN=example.com
 
 # Path to your WordPress instance's /wp-content/uploads/ directory:
