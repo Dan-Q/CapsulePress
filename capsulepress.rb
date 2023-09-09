@@ -61,13 +61,6 @@ class CapsulePress
   end
 end
 
-# Debugging hackery:
-# require 'irb'
-# IRB.start
-# exit
-# puts CapsulePress.handle('/', 'spartan')[:body]
-#puts CapsulePress.handle('/posts/dkim-for-dummies', 'spartan')[:body]; exit
-
 servers = []
 
 # Launch Gemini capsule
