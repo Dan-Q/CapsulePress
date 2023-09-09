@@ -1,8 +1,8 @@
 # CapsulePress
 
-<img src="https://github.com/Dan-Q/CapsulePress/assets/53293/d43495b8-f881-4721-8633-2298155a13c6" alt="CapsulePress logo">
-
 Opinionated Gemini/Spartan/Gopher server backended by a WordPress database. Use WordPress for content management, but publish for a simpler Internet.
+
+![Illustration showing CapsulePress, whose logo is represented by a "WordPress-style" circle in light purple emblazoned with a spacecraft with the astrological sign for Gemini on it, taking posts from WordPress and publishing them via the gemini://, spartan:// and gopher:// protocols](https://github.com/Dan-Q/CapsulePress/assets/53293/e5ada698-32ff-4a0d-a48c-819cbb5c45cf)
 
 ## Requirements
 
