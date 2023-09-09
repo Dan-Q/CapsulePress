@@ -1,5 +1,7 @@
 # CapsulePress
 
+<img src="https://github.com/Dan-Q/CapsulePress/assets/53293/d43495b8-f881-4721-8633-2298155a13c6" alt="CapsulePress logo">
+
 Opinionated Gemini/Spartan/Gopher server backended by a WordPress database. Use WordPress for content management, but publish for a simpler Internet.
 
 ## Requirements
