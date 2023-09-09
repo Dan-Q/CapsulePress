@@ -3,13 +3,14 @@ require 'gserver'
 class SpartanServer < GServer
   def initialize
     super(
-      ENV['SPARTAN_PORT']                 || 300,
-      ENV['SPARTAN_HOST']                 || '0.0.0.0',
-      ENV['SPARTAN_MAX_CONNECTIONS'].to_i || 4
+      (ENV['SPARTAN_PORT'] ? ENV['SPARTAN_PORT'].to_i                       : 300),
+      (ENV['SPARTAN_HOST']                                                 || '0.0.0.0'),
+      (ENV['SPARTAN_MAX_CONNECTIONS'] ? ENV['SPARTAN_MAX_CONNECTIONS'].to_i : 4)
     )
   end
 
   def handle(io, host, path)
+    puts "Spartan: handling"
     if response = CapsulePress.handle(path, 'spartan')
       io.print "2 #{response[:type]}\r\n#{response[:body]}"
     else
@@ -18,6 +19,7 @@ class SpartanServer < GServer
   end
 
   def serve(io)
+    puts "Spartan: client connected"
     req = io.gets
     puts req
     if req =~ /^(\S+)\s+(\S+)\s+(\d+)/
