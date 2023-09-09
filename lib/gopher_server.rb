@@ -8,7 +8,7 @@ class GopherServer
   def self.guess_link_type_for(path)
     return 'g' if path =~ /\.(gif)$/i # image, GIF
     return ':' if path =~ /\.(bmp|dib)$/i # image, generic
-    return 'I' if path =~ /\.(webp|jpe?g|png)$/i # image, generic
+    return 'I' if path =~ /\.(webp|jpe?g|png|svg)$/i # image, generic
     return '5' if path =~ /\.(zip|tar|7z)$/i # archive
     return 's' if path =~ /\.(wav|mp3|opus|pcm)$/i # audio
     return ';' if path =~ /\.(mp4|mkv|mov)$/i # video
