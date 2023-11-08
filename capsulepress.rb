@@ -15,6 +15,7 @@ class CapsulePress
   PAGES_DIR = 'pages'
   TEMPLATES_DIR = 'templates'
   POSTS_PREFIX = '/posts/'
+  PREVIEW_PREFIX = "/_preview_/#{ENV['PREVIEW_SECRET']}/"
 
   def self.known_slugs
     WP.posts(columns: ['wp_posts.post_name'], limit: 99999) .to_a.map{|p|p['post_name']}
@@ -32,6 +33,14 @@ class CapsulePress
     end
   end
 
+  def self.preview(id, protocol)
+    return false unless requested_post = WP.preview(id)
+    puts "Found preview ##{requested_post['ID']}"
+    return false unless template = candidate_pages(TEMPLATES_DIR, 'post', protocol).first
+    puts "Using template #{template}"
+    { type: 'text/gemini', body: Erubis::Eruby.new(File.read(template)).result(binding) }
+  end
+
   def self.post(slug, protocol)
     safe_slug = slug.gsub(/[^a-z0-9\-]/i, '')
     return false unless requested_post = WP.posts(where: [sprintf("wp_posts.post_name = '%s'", safe_slug)], limit: 1)[0]
@@ -44,6 +53,7 @@ class CapsulePress
   def self.handle(path, protocol)
     puts "Requested: #{path}"
     return post(path[POSTS_PREFIX.length..-1], protocol) if path.start_with?(POSTS_PREFIX)
+    return preview(path[PREVIEW_PREFIX.length..-1], protocol) if ENV['PREVIEW_SECRET'] && path.start_with?(PREVIEW_PREFIX)
     if page = candidate_pages(PAGES_DIR, path, protocol).first
       # Try to find a candidate page
       page_contents = File.read(page)
@@ -54,6 +64,7 @@ class CapsulePress
       fullpath = Pathname.new(File.join(ENV['WP_CONTENT_UPLOADS_DIR'], path))
       if fullpath.realpath.to_s.start_with?(ENV['WP_CONTENT_UPLOADS_DIR']) && fullpath.exist?
         mime_type = Marcel::MimeType.for(fullpath)
+        puts "From filesystem: #{fullpath} (#{mime_type})"
         return { type: mime_type, body: File.read(fullpath) }
       end
     end

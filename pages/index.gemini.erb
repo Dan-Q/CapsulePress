@@ -19,7 +19,7 @@ We'll probably never see a Web that looks like that again, but Gemini is designe
 
 ## Selected posts from my blog
 
-<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= p['post_date_gmt'].to_date %> <%= WP.post_title(p) %>
 <% end %>
 ## Elsewhere
 
@@ -28,4 +28,4 @@ We'll probably never see a Web that looks like that again, but Gemini is designe
 => gopher://danq.me/ gopher: Dan's gopherhole
 => finger://danq.me/ finger: Dan's finger server
 => https://m.danq.me/@dan fedi: @dan@danq.me
-=> mailto:gemlog@danq.me email: spartanlog@danq.me
+=> mailto:gemlog@danq.me email: gemlog@danq.me

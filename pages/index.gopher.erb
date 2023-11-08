@@ -29,14 +29,13 @@ I believe that Gemini is our best bet for a future "Gopher-like" system, but I t
 
 My Gopherhole mostly acts as a partial mirror of my weblog. Want to see?
 
-<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %> <%= p['post_date_gmt'].to_date %> <%= WP.post_title(p) %>
 <% end %>
 
                ___       __   ___            ___  __   ___ 
               |__  |    /__` |__  |  | |__| |__  |__) |__  
               |___ |___ .__/ |___ |/\| |  | |___ |  \ |___ 
 
-=> / Home
 => URL:https://danq.me/ www: Dan's main blog
 => URL:gemini://danq.me/ gemini: Dan's gemini capsule
 => URL:spartan://danq.me/ spartan: Dan's spartan instance

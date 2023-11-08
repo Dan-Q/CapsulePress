@@ -33,9 +33,19 @@ class WP
     (post['post_title'] == '') ? post['post_name'].gsub('-', ' ').capitalize : post['post_title']
   end
 
+  def self.preview(id)
+    query("
+      SELECT
+        wp_posts.ID, wp_posts.post_date_gmt, wp_posts.post_name, wp_posts.post_title, wp_posts.post_content, wp_postmeta_gemtext.meta_value gemtext
+      FROM wp_posts
+      LEFT JOIN wp_postmeta wp_postmeta_gemtext ON wp_posts.ID = wp_postmeta_gemtext.post_ID	AND wp_postmeta_gemtext.meta_key='gemtext'
+      WHERE wp_posts.ID=#{id.to_i}
+      LIMIT 1
+    ").to_a[0]
+  end
 
   def self.posts(
-    columns: ['wp_posts.ID', 'wp_posts.post_date_gmt', 'wp_posts.post_name', 'wp_posts.post_title', 'wp_posts.post_content'],
+    columns: ['wp_posts.ID', 'wp_posts.post_date_gmt', 'wp_posts.post_name', 'wp_posts.post_title', 'wp_posts.post_content', 'wp_postmeta_gemtext.meta_value gemtext'],
     where: ['(1=1)'],
     order_by: 'wp_posts.post_date_gmt DESC',
     limit: 30,
@@ -51,6 +61,7 @@ class WP
       LEFT JOIN wp_term_taxonomy ON wp_terms.term_id = wp_term_taxonomy.term_id
       LEFT JOIN wp_term_relationships ON wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id
       LEFT JOIN wp_posts ON wp_term_relationships.object_id = wp_posts.ID
+      LEFT JOIN wp_postmeta wp_postmeta_gemtext ON wp_posts.ID = wp_postmeta_gemtext.post_ID AND wp_postmeta_gemtext.meta_key='gemtext'
       WHERE wp_term_taxonomy.taxonomy='post_tag'
       AND wp_posts.post_type = 'post'
       AND wp_posts.post_status = 'publish'

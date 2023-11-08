@@ -1,5 +1,5 @@
 # <%= requested_post['post_title'].strip %>
 
-<%= requested_post['post_date_gmt'].to_date.to_s.strip %>
+<%= requested_post['post_date_gmt'] ? requested_post['post_date_gmt'].to_date.to_s.strip : Date.today.to_s.strip %>
 
-<%= Convert.html_to_gmi(requested_post['post_content']).strip %>
+<%= requested_post['gemtext'] || Convert.html_to_gmi(requested_post['post_content']).strip %>

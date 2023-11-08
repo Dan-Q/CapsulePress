@@ -26,7 +26,7 @@ class Convert
     # use a DOM parser for the rest...
     dom = Nokogiri::HTML.parse(html)
     # entirely remove certain tags: e.g. <style>
-    dom.css('style').each(&:remove)
+    dom.css('style, script').each(&:remove)
     # handle blockquotes
     dom.css('blockquote').each do |b|
       new_node = dom.create_element 'span' # throwaway element
@@ -46,7 +46,7 @@ class Convert
       p.replace(new_node)
     end
     # handle image links
-    dom.css('a[href$="png"], a[href$="gif"], a[href$="jpg"], a[href$="webp"]').each do |a|
+    dom.css('a[href$="png"], a[href$="gif"], a[href$="jpg"], a[href$="webp"], a[href$="svg"]').each do |a|
       t = a['title']
       if (((!t) || (t == '') || (t == a['href'])) && (i = a.css('img')[0]))
         t = i['alt']
