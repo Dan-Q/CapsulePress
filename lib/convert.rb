@@ -21,7 +21,7 @@ class Convert
         t = "Image ##{u['ID']}" if !t || (t == '')
         "<a href=\"#{u['guid']}\" title=\"#{t.gsub('"', '')}\">#{t}</a>"
       end
-      links.join('')
+      links.uniq.join('')
     end
     # use a DOM parser for the rest...
     dom = Nokogiri::HTML.parse(html)
@@ -64,7 +64,7 @@ class Convert
       end
     end
     links.reject!{|a| links_not_to_append_to_bottom.include?(a['href'])}
-    links = links.map{|a|"=> #{a['href']} #{a['title'] || a.text.upcase_first}"}.join("\n")
+    links = links.map{|a|"=> #{a['href']} #{a['title'] || a.text.upcase_first}"}.uniq.join("\n")
     # handle headings
     dom.css('h2').each{|h|h.replace("## #{h.text}")}
     dom.css('h3, h4, h5, h6').each{|h|h.replace("### #{h.text}")}
