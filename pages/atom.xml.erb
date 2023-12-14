@@ -1,0 +1,21 @@
+!!! mime_type='application/atom+xml'
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Dan Q</title>
+  <subtitle>Personal blog of Dan Q</subtitle>
+  <link href="<%= @protocol %>://danq.me/atom.xml" rel="self" />
+  <link href="<%= @protocol %>://danq.me/" rel="alternate" />
+  <id>gemini://danq.me/atom.xml</id>
+  <author>
+    <name>Dan Q</name>
+    <email><%= @protocol %>-feed@danq.me</email>
+  </author>
+  <% WP.posts.each do |p| %>
+  <entry>
+    <id><%= @protocol %>://danq.me/posts/<%= p['post_name'] %></id>
+    <title><%= WP.post_title(p) %></title>
+    <updated><%= p['post_date_gmt'].to_datetime.rfc3339 %></updated>
+    <link rel="alternate" href="<%= @protocol %>://danq.me/posts/<%= p['post_name'] %>" />
+  </entry>
+  <% end %>
+</feed>

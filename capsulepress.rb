@@ -56,9 +56,15 @@ class CapsulePress
     return preview(path[PREVIEW_PREFIX.length..-1], protocol) if ENV['PREVIEW_SECRET'] && path.start_with?(PREVIEW_PREFIX)
     if page = candidate_pages(PAGES_DIR, path, protocol).first
       # Try to find a candidate page
+      mime_type = 'text/gemini'
       page_contents = File.read(page)
-      page_contents = Erubis::Eruby.new(page_contents).result if page.end_with?('.erb')
-      return { type: 'text/gemini', body: page_contents }
+      page_contents = Erubis::Eruby.new(page_contents).evaluate({ protocol: protocol }) if page.end_with?('.erb')
+      # find any !!! [ruby code] blocks at the beginning of the output and eval them (eek!) to e.g. change mime type
+      while page_contents =~ /\A!!! (.*)/
+        page_contents = page_contents.split("\n")[1..-1].join("\n") # remove first line
+        eval($1) # execute
+      end
+      return { type: mime_type, body: page_contents }
     else
       # Failing that, try to find a file on the filesystem
       fullpath = Pathname.new(File.join(ENV['WP_CONTENT_UPLOADS_DIR'], path))
