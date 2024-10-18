@@ -1,0 +1,38 @@
+===============================================================================
+                        __             __          ___
+                       |  \  /\  |\ | /  \   |\/| |__ 
+                       |__/ /~~\ | \| \__X . |  | |___
+===============================================================================
+
+Dan Q's Nex Home
+================
+
+Contains selected posts from my blog, and ocassional content exclusive to my Nex Home.
+
+Selected posts from my blog
+---------------------------
+
+<% WP.posts.each do |p| %>=> /posts/<%= p['post_name'] %>/ <%= WP.post_title(p) %>
+<%= WP.post_title(p) %> (<%= p['post_date_gmt'].to_date %>)
+<% end %>
+
+Elsewhere
+---------
+
+=> https://danq.me/ 
+www: Dan's main blog
+
+=> gemini://danq.me/
+gemini: Dan's gemini capsule
+
+=> gopher://danq.me/
+gopher: Dan's gopherhole
+
+=> finger://danq.me/
+finger: Dan's finger server
+
+=> https://m.danq.me/@dan
+fedi: @dan@danq.me
+
+=> mailto:nex@danq.me
+email: nex@danq.me

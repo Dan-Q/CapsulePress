@@ -7,6 +7,7 @@ require './lib/convert'
 require './lib/gemini_server'
 require './lib/spartan_server'
 require './lib/gopher_server'
+require './lib/nex_server'
 require 'pathname'
 require 'erubis'
 require 'marcel'
@@ -102,6 +103,16 @@ if (!ENV.include?('USE_GOPHER')) || (ENV['USE_GOPHER'].downcase == 'true')
   puts "Digging Gopher hole..."
   gopher_server = GopherServer.new
   servers << gopher_server
+end
+
+# Serve Nex
+if (!ENV.include?('USE_NEX')) || (ENV['USE_NEX'].downcase == 'true')
+  puts "Serving Nex..."
+  nex_server = NexServer.new
+  nex_server.audit = true # log output
+  nex_server.debug = true # debugging
+  nex_server.start
+  servers << nex_server
 end
 
 loop do
